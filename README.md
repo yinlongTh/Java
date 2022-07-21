@@ -1,2 +1,2 @@
-# Java
-All of my Java Codes and Projects are located here
+## Java
+All of my personal simple Java Codes are located here, Please feel free to play or use.
