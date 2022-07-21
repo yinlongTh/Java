@@ -1,0 +1,368 @@
+public class Main { //Class name needs to match with file save Main.java
+
+//========================Method || Function=============================
+    static int myMethod(String x, int y, int z) { //Define in class, outside main()
+      System.out.println(x + " Hello " + y )
+      return y + z;
+    } //use 'static void ...' in case having no return
+
+//Start main execution
+  public static void main(String[] args) { //any in main will be executed
+    
+    String myName = "Yinlong";
+    int outVal = myMethode(myName, 2, 4); //defined function being executed
+
+    System.out.println("Here is syntax hub, Yinlong"); 
+    String myName = "Yinlong";
+    int myInt = 22; //float myFloat = 6.01f (6-7 decimal place)
+    final int myFixedInt = 20; //read only, Cannot be changed
+    double myDoub = 3.5e6d; //up to 15 decimal place
+    boolean myBool = true;
+    
+//Changing type of data
+    int myInt = 9;
+    double myDoub = myInt; //store 9.0 automatically
+    int backToInt = (int) myDoub //Cause Narrowing Casting
+
+/* Logical and Math
+Like c++, ==, !=, >=, <=, &&, ||, !(x < 4 && y >= 9)
+*/
+
+//==============================String====================================
+
+    String txt = "Check How Long thos String is"
+    System.out.println(txt.length());
+    System.out.println(txt.toUpperCase());   //Or 'toLowerCase' 
+    IndStr = txt.indexOf("How"); //return 6 including whitespace and start from zero
+
+//To use "" inside a String
+    String txt = "hey \"Yinlong\" is here";
+
+//==============================Math====================================
+    int x = 5;
+    int y = 12;
+    int num = Math.max(x,y); //.min, .sqrt, .abs, .random(), 
+
+//==============================Condition====================================
+    if (x < y) {
+      System.out.println(x + " is smaller than " + y);
+    } else { //else if()
+      System.out.println("...");
+    }
+
+    int day = 2
+    switch(day) {
+      case 1:
+        System.out.println("Monday");
+        break;
+      case 2: 
+        System.out.println("Tuesday");
+        break;
+      default:
+      //code for defualt
+    }
+
+//==============================Loop====================================
+    int i = 0; 
+    while(i < 5) {
+      System.out.println(i);
+      i = i+1; // i++
+    }
+
+    for (int j = 0; j < 5; j = j+1) {
+       System.out.println(j);
+    }
+
+    String[] days = {"Mon", "Tues", "Wed"}; //Arrays
+    for (String i : days) {
+       System.out.println(i);
+    }
+
+//==============================Array====================================
+    String[] colors = {"Red", "Blue", "Green"};
+    System.out.println(colors[0]);
+    colors[2] = "Purple";
+    System.out.println(colors.length);
+
+    int[][] myNums = { {1,2,3,4}, {7,8,9} };
+    int x = myNums[0][2];
+
+//===========================Block Scope=================================
+    {
+    int insideScopeInt = 2;
+    System.out.println(insideScopeInt);
+    } //The variable cannot be used outside this scope
+
+
+  }
+} // End of class Main
+
+
+
+**************************************Other Syntax**********************************
+//===========================Class & Object=================================
+: Compiles multiple files of classes, then Run one that has void main
+
+- Example
+```
+public class Main {
+  int x = 5; //An Attribute "x" of class "Main", the value doesnt need to be defined
+} //Save as Main.java
+
+Class Second {
+  public static void main(String[] args) {
+    Main myObj = new Main(); //Creating an object by class Main
+    System.out.println(myObj.x);
+  }
+} //Save as Second.java
+
+Then in Terminal
+javac Main.java
+javac Second.java
+java Second #Output will be 5
+```
+
+- Public and Static method in class
+Public method needs to be called by Object, When Static does not
+```
+public class Main {
+  static void greeting() {
+    System.out.println("Hello there")
+  }
+
+  public void namesay() {
+    System.out.println("I am Yinlong")
+  }
+
+  public static void main(String[] args) {
+    greeting();
+    
+    Main myObj = new Main();
+    myObj.namesay();
+  }
+
+}
+```
+
+- Import Package and classes 
+```
+import package.name.Class;   // Import a single class
+import package.name.*;   // Import the whole package
+```
+
+- Create a package
+```
+package mypack;
+class MyPackageClass {
+  public static void main(String[] args) {
+    System.out.println("This is my package");
+  }
+}
+
+javac MyPackageClass.java
+javac -d . MyPackageClass.java
+```
+
+- Inheritance and Polymorphism
+```
+class Animal {
+  public void animalSound() {
+    System.out.println("Animal makes sounds");
+  }
+}
+
+class Pig extends Animal {
+  public void animalSound() {
+    System.out.println("A pig says : wee wee")
+  }
+}
+
+class Dog extends Animal {
+  public void animalSound() {
+    System.out.println("A pig says : bow bow")
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Animal myAnimal = new Animal(); 
+    Animal myPig = new Pig();
+    Animal myDog = new Dog();
+    myPig.animalSound();
+  }
+}
+
+```
+
+- Enum
+: A special class that represents a group of constants
+```
+enum Level {
+  Low,
+  MEDIUM,
+  High
+}
+...
+Level myVar = Level.MEDIUM
+
+```
+
+//=========================Scanner : User Input=============================
+: Use a package Scanner (java.util.Scanner)
+```
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);
+    System.out.println("Enter name name and age");
+
+    String userName = myObj.nextLine(); //read user input
+    int age = myObj.nextInt();
+    System.out.println(userName + age);
+  }
+}
+```
+
+//===========================ArrayList=================================
+: resizable array / the normal array in built-in syntax is not resizable.
+```
+import java.util.ArrayList;
+
+public class Main {
+  public static void main(String[] arg) {
+    ArrayList<String> cars = new ArrayList<String>;
+    cars.add("Volvo");
+    cars.add("BMW");
+    System.out.println(cars);
+    cars.get(0);
+    cars.set(0, "Ferrari");
+  }
+}
+```
+
+//===========================HashMap=================================
+: an Array of Key-Value
+```
+import java.util.HashMap;
+
+public class Main {
+  public static void main(String[] args) {
+    HashMap<String, String> capitalCity = new HashMap<String, String>();
+    
+    capitalCity.put("USA","Ohio");
+    capitalCity.put("Canada","Ontario");
+
+    capitalCity.get("USA");
+  }
+}
+```
+
+//===========================HashSet===============================
+: set / every item is unique
+```
+import java.util.HashSet;
+
+public class Main {
+  public static void main(String[] args) {
+    HashSet<String> cars = new HashSet<String>();
+    cars.add("Volvo");
+    cars.add("BMW");
+    cars.add("Ford");
+    cars.add("BMW");
+    cars.add("Mazda");
+    System.out.println(cars);
+  }
+}
+```
+
+//==========================Wrapper Classes==============================
+: provides a way to use primitive data types as objects
+byte to Byte, short to Short, int to Integer ...
+Example : in ArrayList where primitive types cannot be used
+```
+ArrayList<Integer> myNumbers = new ArrayList<Integer>();
+...or...
+Integer x = 10; 
+Then we can use
+String Xstr = x.toString(); 
+
+But object compared to primitive uses much more time to process and work loads.
+```
+
+//==================Regular Expression===========================
+: Search pattern
+```
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Main {
+  public static void main(String[] args) {
+    Pattern pattern = Pattern.compile("yinlong", Pattern.CASE_INSENSITIVE)
+    Natcher matcher = pattern.matcher("Yinlong is here");
+    boolean matchFound = matcher.find();
+    System.out.println(matchFound)
+  } 
+}
+```
+
+//==================Thread===========================
+: Make tasks to run in the background, not in the main
+
+*******************************************************************************
+
+Files 
+: Create, Read, Update, Delete
+
+- Create
+```
+import java.io.File;  // Import the File class
+import java.io.IOException;  // Import the IOException class to handle errors
+
+public class CreateFile {
+  public static void main(String[] args) {
+    try {
+      File myObj = new File("C:\\Users\\MyName\\filename.txt");
+      if (myObj.createNewFile()) {
+        System.out.println("File created: " + myObj.getName());
+      } else {
+        System.out.println("File already exists.");
+      }
+    } catch (IOException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+- Write
+```
+import java.io.FileWriter;   // Import the FileWriter class
+import java.io.IOException;  // Import the IOException class to handle errors
+
+public class WriteToFile {
+  public static void main(String[] args) {
+    try {
+      FileWriter myWriter = new FileWriter("filename.txt");
+      myWriter.write("Files in Java might be tricky, but it is fun enough!");
+      myWriter.close();
+      System.out.println("Successfully wrote to the file.");
+    } catch (IOException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+ 
+
+
+
+
+
+
+
+
+
