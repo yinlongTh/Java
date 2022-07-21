@@ -1,0 +1,47 @@
+import java.util.Scanner;
+import java.util.HashMap;
+
+class Yinlong {
+  final String name = "Yinlong";
+  final String lastname = "Thatiyanantaporn";
+  int age = 22;
+
+  static void intro(String username) {
+    System.out.println("Hi " + username + ", Welcome to Yinlong Guess age Game");
+  }
+
+  
+  public void agegame() {
+    Scanner userin = new Scanner(System.in);
+    Yinlong ref = new Yinlong();
+    int age = ref.age; 
+    
+    for (int i = 0; i < 3; i++) {
+      int usage = userin.nextInt();
+      if (usage > age) {
+        System.out.println("your guess was too high" + ". You have " + (2-i) + " attemp(s) left");
+      }else if (usage < age) {
+        System.out.println("your guess was too low" + ". You have " + (2-i) + " attemp(s) left");
+      }else {
+        System.out.println("yea, you got me");
+        break;
+      }  
+    } 
+   
+  }
+  
+  public static void main(String[] args) {
+    Yinlong yl = new Yinlong();
+    Scanner userin = new Scanner(System.in);
+    System.out.println("Please Enter your name");
+    String username = userin.nextLine();
+    intro(username);
+
+    System.out.println("Let's play a game! Guess my age, you have only 3 attemps"  + "\n" + 
+                        "Please enter your guess :");
+
+    yl.agegame();
+    
+  }
+
+}
